@@ -1,0 +1,14 @@
+#cloud-config
+# TODO: what the VM does by itself on its FIRST boot. Read https://cloudinit.readthedocs.io/ (modules: packages, users, write_files, runcmd).
+#
+#  - update the package index and install git and python3-venv
+#  - create a system user `beanie` that cannot log in (shell /usr/sbin/nologin)
+#  - write ONE systemd template unit /etc/systemd/system/beanie@.service. `%i` is the instance name, so
+#       beanie@gateway, beanie@menu, ... are five services from one file.
+#       It runs as the user beanie, in /opt/beanie, and starts:  /opt/beanie/venv/bin/python -m beanie %i
+#       It restarts on failure and is wanted by multi-user.target.
+#  - clone https://github.com/professordiogodev/beanie.git, tag v0.1.0, into /opt/beanie (--depth 1)
+#  - make a virtual environment in /opt/beanie/venv and pip install -r /opt/beanie/requirements.txt
+#  - reload systemd, then enable AND start beanie@gateway, @menu, @orders, @payments and @notifications
+#
+# No secrets in this file: it is stored in the VM's metadata and readable by anyone with access to the VM.
