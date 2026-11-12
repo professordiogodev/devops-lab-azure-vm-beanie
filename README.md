@@ -22,11 +22,22 @@
 
 ## 🎬 The situation
 
-<p align="center"><img src="assets/gifs/situation.gif" width="300" alt="Animation: az vm create --custom-data"></p>
+<p align="center"><img src="assets/gifs/situation.gif" width="300" alt="A virtual machine with one public port open and the rest closed"></p>
 
-A new client lives on Microsoft Azure, and they do not care what you know about AWS. They want Beanie, the cafe ordering system, running on **one Linux virtual machine** by the end of the day, reachable by customers on one port and by you on another, and nothing else. Nobody should have to log in to install it: if the VM is deleted, a new one must come up already running Beanie.
+A new client lives on Microsoft Azure, and they do not care what you know about AWS. They want Beanie running on **one Linux virtual machine** by the end of the day, reachable by customers on one port and by you on another, and nothing else. Nobody should have to log in to install it: if the VM is deleted, a new one must come up already running Beanie.
 
-You know the ideas from AWS: a network, a firewall, a public address, a server. Azure has its own names, its own defaults and a few traps. Today you map one to the other, build the thing with the `az` CLI, and prove from the internet that the right doors are open and the others are shut.
+Think of this as a trip to a country where you almost speak the language:
+
+```text
+PHRASEBOOK                      AWS                    Azure
+"a private network"             VPC                    virtual network
+"a firewall for one server"     security group         network security group
+"a public address"              Elastic IP             public IP address
+"a server"                      EC2 instance           virtual machine
+"set it up by itself"           user data              cloud-init
+```
+
+Most words are close and a few are false friends. You will build the thing with the `az` CLI, and prove from the internet that the right doors are open and the others are shut.
 
 > [!IMPORTANT]
 > **Your mission**
